@@ -1,0 +1,39 @@
+{% extends "AppCode/base.html" %}
+
+{% block contenido %}
+
+<div class="container">
+    <p class="text-center fs-2 text">Formulario - Agregar Turno</p>
+            
+    {% if miFormulario.errors %}
+
+    <p style="color: red;"> Están mal los datos, revisar</p>
+
+    {% endif %}
+
+
+    <form action="" method="POST">{% csrf_token %}
+
+        <div class=" mb-3 form-outline">
+            <p>Fecha:</p>
+            <input type="date" name="fecha" class="form-control">
+        </div>
+        <div class="mb-3 form-outline">
+            <p>Apellido del doctor:</p>
+            <input type="text" name="apellido_doctor" class="form-control">
+        </div>
+        <div class="mb-3 form-outline">
+            <p>DNI del paciente:</p>
+            <input type="number" name="dni_paciente" class="form-control">
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <input type="submit" value="Enviar" class="btn btn-success btn-lg">
+        </div>
+
+    </form>
+
+    <a class="text-center" href="{% url 'ListarTurnos' %}"><i class="bi bi-card-list"></i>Consultar listado de turnos</a>
+
+</div>
+
+{% endblock %}

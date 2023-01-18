@@ -1,0 +1,40 @@
+{% extends "AppCode/base.html" %}
+
+{% block contenido %}
+
+<div class="container">   
+    <p class="text-center fs-2 text">Listado de Pacientes</p>
+    <br>
+
+    <form action="{% url 'BuscarPacientes' %}" method="Post" class="row g-3">
+    {% csrf_token %}
+    <input type="text" name="busqueda" class="form-control" placeholder="Buscar por...">
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <input type="submit" value="Buscar" class="btn btn-success mb-3">
+    </div>
+    </form>
+    <br>
+
+    <table class="table table-sm">
+        <tbody>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>DNI</th>
+            <th>Edad</th>
+            <th>Email</th>
+          </tr>
+          {% for paciente in pacientes %}
+          <tr>
+            <td>{{ paciente.nombre }}</td>
+            <td>{{ paciente.apellido }}</td>
+            <td>{{ paciente.dni }}</td>
+            <td>{{ paciente.edad }}</td>
+            <td>{{ paciente.email }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "AppCode/base.html" %}
+
+{% block contenido %}
+    <p class="text-center fs-2 text">Formulario - Agregar Odontologo</p>
+        
+    {% if miFormulario.errors %}
+
+    <p style="color: red;"> Están mal los datos, revisar</p>
+
+    {% endif %}
+
+
+    <form action="" method="POST">{% csrf_token %}
+
+        <div class=" mb-3 form-outline">
+            <p>Nombre:</p>
+            <input type="text" name="nombre" class="form-control">
+        </div>
+        <div class="mb-3 form-outline">
+            <p>Apellido:</p>
+            <input type="text" name="apellido" class="form-control">
+        </div>
+        <div class="mb-3 form-outline">
+            <p>Numero de Matricula:</p>
+            <input type="number" name="numero_matricula" class="form-control">
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <input type="submit" value="Enviar" class="btn btn-success btn-lg">
+        </div>
+
+    </form>
+    
+    <a class="text-center" href="{% url 'ListarOdontologos' %}"><i class="bi bi-card-list"></i>Consultar listado de odontologos</a>
+
+
+{% endblock %}

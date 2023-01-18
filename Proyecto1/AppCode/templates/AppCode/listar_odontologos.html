@@ -1,0 +1,36 @@
+{% extends "AppCode/base.html" %}
+
+{% block contenido %}
+
+<div class="container">   
+    <p class="text-center fs-2 text">Listado de Odontologos</p>
+    <br>
+
+    <form action="{% url 'BuscarOdontologos' %}" method="Post" class="row g-3">
+    {% csrf_token %}
+    <input type="text" name="busqueda" class="form-control" placeholder="Buscar por...">
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <input type="submit" value="Buscar" class="btn btn-success mb-3">
+    </div>
+    </form>
+    <br>
+
+    <table class="table table-sm">
+        <tbody>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Numero de Matricula</th>
+          </tr>
+          {% for odontologo in odontologos %}
+          <tr>
+            <td>{{ odontologo.nombre }}</td>
+            <td>{{ odontologo.apellido }}</td>
+            <td>{{ odontologo.numero_matricula }}</td>
+         </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+</div>
+
+{% endblock %}
